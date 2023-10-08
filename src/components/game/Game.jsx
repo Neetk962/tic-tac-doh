@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import 
+import './Game.css';
 
 
 const Game = () => {
     const [turn, setTurn] = useState('x');
-    const [position, setPosition] = useState(array(9).fill(''));
+    const [position, setPosition] = useState(Array(9).fill(''));
     const [winner, setWinner] = useState();
 
     const checkForWinner = (squares) => {
