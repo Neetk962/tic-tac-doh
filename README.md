@@ -66,7 +66,8 @@ Demo Video
 
 MIT License
 
-Copyright (c) 2023 Alexa Webb
+Copyright (c) 2023 Athena Wallis, Jesus Santos, Jason Gabianelli, Alexa Webb,  Ravneet Kaur
+
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
