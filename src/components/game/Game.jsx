@@ -4,8 +4,8 @@ import { Board } from './Board';
 import { ResetButton} from './ResetButton';
 import { ScoreBoard } from './ScoreBoard';
 import '../../App.css';
-const X = require('../../assets/duff.png');
-const O = require('../../assets/donut.png');
+import X from '../../assets/duff.png';
+import O from '../../assets/donut.png';
 
 
 
@@ -33,7 +33,7 @@ const Game = () => {
                 const updateGameboard = gameboard.map((value, idx) =>{
                     if (idx === squareIdx) {
                         // change X and O go be images
-                        return xPlayer ? "X" : "O";
+                        return xPlayer ? <img src={X}/> : <img src={O}/>;
                     }else {
                         return value;
                     }
@@ -45,7 +45,7 @@ const Game = () => {
                 const winner = checkWinner(updateGameboard);
 
                 if (winner){
-                    if (winner === "O"){
+                    if (winner === <img src={O}/>){
                         let {oScore} = score;
                         oScore += 1;
                         setScore({...score, oScore})
