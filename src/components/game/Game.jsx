@@ -4,6 +4,8 @@ import { Board } from './Board';
 import { ResetButton} from './ResetButton';
 import { ScoreBoard } from './ScoreBoard';
 import '../../App.css';
+const X = require('../../assets/duff.png');
+const O = require('../../assets/donut.png');
 
 
 
