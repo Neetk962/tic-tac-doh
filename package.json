@@ -15,8 +15,6 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "^5.0.1",
-    "socket.io": "^4.7.2",
-    "socket.io-client": "^4.7.2",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -46,17 +44,5 @@
   "devDependencies": {
     "nodemon": "^3.0.1",
     "tailwindcss": "^3.3.3"
-  },
-  "description": "'The Simpsons' Themed Tic-Tac-Toe Game!",
-  "main": "main.jsx",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Neetk962/Tic-Tac-Doh.git"
-  },
-  "author": "",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/Neetk962/Tic-Tac-Doh/issues"
-  },
-  "homepage": "https://github.com/Neetk962/Tic-Tac-Doh#readme"
+  }
 }
