@@ -1,106 +1,87 @@
+
 import React, { useState } from 'react';
-import './Game.css';
+import { Board } from './Board';
+import { ResetButton} from './ResetButton';
+import { ScoreBoard } from './ScoreBoard';
+import '../../App.css';
+
 
 
 const Game = () => {
-    const [turn, setTurn] = useState('x');
-    const [position, setPosition] = useState(Array(9).fill(''));
-    const [winner, setWinner] = useState();
 
-    const checkForWinner = (squares) => {
         // checks for winning patterns
-        let combinations = {
-            across: [
+        const WIN_POSITIONS = 
+            [
                 [0, 1, 2],
                 [3, 4, 5],
-                [6, 7, 8],
-            ],
-            diagnol: [
+                [6, 7, 8],          
                 [0, 4, 8],
-                [2, 4, 6],
-            ],
-            down: [
+                [2, 4, 6],           
                 [2, 5, 8],
                 [1, 4, 7],
                 [0, 3, 6],
-            ],
-        };
-
-        for (let combination in combinations) {
-            combinations[combination].forEach((pattern) =>{
+            ]
             
-            if(
-                squares[pattern[0]] === '' ||
-                squares[pattern[1]] === '' ||
-                squares[pattern[2]] === ''
-            ){
-                // do not do anything
-            } else if (
-                squares[pattern[0]] === squares[pattern[1]] &&
-                squares[pattern[1]] === squares[pattern[2]]
-            ){
-                setWinner(squares[pattern[0]]);
+            const [xPlayer, setXPlayer] = useState(true);
+            const [gameboard, setGameboard] = useState(Array(9).fill(null))
+            const [score, setScore] = useState({xScore: 0, oScore: 0})
+            const [gameOver, setGameOver] = useState(false);
+
+            const handleSquareClick = (squareIdx) => {
+                const updateGameboard = gameboard.map((value, idx) =>{
+                    if (idx === squareIdx) {
+                        // change X and O go be images
+                        return xPlayer ? "X" : "O";
+                    }else {
+                        return value;
+                    }
+                })
+
+                setGameboard(updateGameboard);
+
+                // check for winner
+                const winner = checkWinner(updateGameboard);
+
+                if (winner){
+                    if (winner === "O"){
+                        let {oScore} = score;
+                        oScore += 1;
+                        setScore({...score, oScore})
+                    }else{
+                        let {xScore} = score;
+                        xScore += 1;
+                        setScore({...score, xScore})
+                    }
+                }
+                // change who is playing
+                setXPlayer(!xPlayer);
+
             }
-        });
-    }
-    };
-    const handleClick = (num) => {
-        if (position[num] !== '') {
-            alert('Try Again, already clicked.');
-            return;
-        }
-        let squares = [...position];
 
-        if (turn ==='x') {
-            squares[num] = 'x';
-            setTurn('o');
-        }else {
-            squares[num] = 'o';
-            setTurn('x');
-        }
-        checkForWinner(squares);
-        setPosition(squares);
-    };
-    const handlePlayAgain = () => {
-        setWinner(null);
-        setPosition(Array(9).fill(''));
-    };
-    const Cell = ({num}) => {
-        return <td onClick={() => handleClick(num)}></td>
-    };
+            const checkWinner = (gameboard) => {
+                for (let i = 0; i<WIN_POSITIONS.length; i++){
+                    const [x, y, z] = WIN_POSITIONS[i];
 
-    return (
-        <section className='container flex flex-col justify-center items-center'>
-            <table className='border-black table-auto'>
-                Turn: {turn}
-                <tbody>
-                    <tr>
-                        <Cell num={0} />
-                        <Cell num={1} />
-                        <Cell num={2} />
-                    </tr>
-                    <tr>
-                        <Cell num={3} />
-                        <Cell num={4} />
-                        <Cell num={5} />                    
-                    </tr>
-                    <tr>
-                        <Cell num={6} />
-                        <Cell num={7} />
-                        <Cell num={8} />                    
-                    </tr>
-                </tbody>
-            </table>
-            {winner && (
-                <>
-                    <p>{winner} is the winner!</p>
-                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" onClick={() => handlePlayAgain()}>Play Again</button>
-                </>
-            )}
+                    // check for winning patterns
+                    if (gameboard[x] && gameboard[x] === gameboard[y] && gameboard[y] === gameboard[z]) {
+                        setGameOver(true);
+                        return gameboard[x];
+                    }
+                }
+            }
 
-        </section>
-    );
+            const resetGameboard = () => {
+                setGameOver(false);
+                setGameboard(Array(9).fill(null));
+            }
 
-};
+            return(
+                <section className='Game'>
+                    <ScoreBoard score={score} xPlayer={xPlayer}/>
+                    <Board gameboard ={gameboard} onClick={gameOver ? resetGameboard : handleSquareClick} />
+                    <ResetButton resetGameboard={resetGameboard} />
+                </section>
+            );
+}
 
 export default Game;
