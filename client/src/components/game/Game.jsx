@@ -10,6 +10,7 @@ import O from '../../assets/donut.png';
 
 
 const Game = () => {
+    
 
         // checks for winning patterns
         const WIN_POSITIONS = 
