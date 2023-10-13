@@ -6,7 +6,15 @@ import { ScoreBoard } from './ScoreBoard';
 import '../../App.css';
 import X from '../../assets/duff.png';
 import O from '../../assets/donut.png';
+<<<<<<< HEAD
 import DOH from '../../assets/doh.png';
+=======
+import soundFile from "../../assets/homer-woohoo.mp3";
+// import Game from "./components/game/Game";
+// import homericon from './assets/IMG_2846.jpg'
+// import lisaicon from './assets/IMG_2847.jpg'
+// import margeicon from "./assets/IMG_2850.jpg"
+>>>>>>> main
 
 
 
@@ -75,6 +83,8 @@ const Game = () => {
             }
 
             const resetGameboard = () => {
+                const audio = new Audio(soundFile);
+                audio.play();
                 setGameOver(false);
                 setGameboard(Array(9).fill(null));
             }
