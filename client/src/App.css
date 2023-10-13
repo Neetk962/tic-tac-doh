@@ -2,3 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 @import url("https://fontmeme.com/simpsons-font/");
+
+#doh {
+  max-width: 25%;
+}
+
+#header {
+  font-size: 60px;
+  font-weight: bolder;
+  display: inline-flex;
+  justify-content: center;
+}

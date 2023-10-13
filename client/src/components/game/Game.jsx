@@ -6,6 +6,7 @@ import { ScoreBoard } from './ScoreBoard';
 import '../../App.css';
 import X from '../../assets/duff.png';
 import O from '../../assets/donut.png';
+import DOH from '../../assets/doh.png';
 
 
 
@@ -79,11 +80,14 @@ const Game = () => {
             }
 
             return(
-                <section className='Game'>
-                    <ScoreBoard score={score} xPlayer={xPlayer}/>
-                    <Board gameboard ={gameboard} onClick={gameOver ? resetGameboard : handleSquareClick} />
-                    <ResetButton resetGameboard={resetGameboard} />
-                </section>
+                <>
+                <header id="header">Tic-Tac-<img id="doh" src={DOH}/></header>
+                    <section className='Game'>
+                        <ScoreBoard score={score} xPlayer={xPlayer}/>
+                        <Board gameboard ={gameboard} onClick={gameOver ? resetGameboard : handleSquareClick} />
+                        <ResetButton resetGameboard={resetGameboard} />
+                    </section>
+                </>
             );
 }
 
