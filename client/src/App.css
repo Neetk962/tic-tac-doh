@@ -1,4 +1,13 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-@import url("https://fontmeme.com/simpsons-font/");
+body {
+    background-image: url(./assets/clouds.png);
+}
+
+.simpsonfont {
+    font-family: Simpsonfont;
+}
+
+#dohimg {
+    width: 300px;
+    height: 200px;
+    margin: auto;
+}
