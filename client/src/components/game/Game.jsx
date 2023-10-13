@@ -4,6 +4,10 @@ import { Board } from './Board';
 import { ResetButton} from './ResetButton';
 import { ScoreBoard } from './ScoreBoard';
 import '../../App.css';
+import Game from "./components/game/Game";
+import homericon from './assets/IMG_2846.jpg'
+import lisaicon from './assets/IMG_2847.jpg'
+import margeicon from "./assets/IMG_2850.jpg"
 
 
 
