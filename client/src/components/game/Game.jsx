@@ -4,10 +4,13 @@ import { Board } from './Board';
 import { ResetButton} from './ResetButton';
 import { ScoreBoard } from './ScoreBoard';
 import '../../App.css';
+import X from '../../assets/duff.png';
+import O from '../../assets/donut.png';
 
 
 
 const Game = () => {
+    
 
         // checks for winning patterns
         const WIN_POSITIONS = 
@@ -31,7 +34,7 @@ const Game = () => {
                 const updateGameboard = gameboard.map((value, idx) =>{
                     if (idx === squareIdx) {
                         // change X and O go be images
-                        return xPlayer ? "X" : "O";
+                        return xPlayer ? <img src={X} data='X'/> : <img src={O} data='O'/>;
                     }else {
                         return value;
                     }
@@ -63,9 +66,9 @@ const Game = () => {
                     const [x, y, z] = WIN_POSITIONS[i];
 
                     // check for winning patterns
-                    if (gameboard[x] && gameboard[x] === gameboard[y] && gameboard[y] === gameboard[z]) {
+                    if (gameboard[x]?.props?.data && gameboard[x]?.props?.data === gameboard[y]?.props?.data && gameboard[y]?.props?.data === gameboard[z]?.props?.data) {
                         setGameOver(true);
-                        return gameboard[x];
+                        return gameboard[x].props.data;
                     }
                 }
             }

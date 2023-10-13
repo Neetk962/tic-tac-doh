@@ -42,7 +42,7 @@ build
 # Dependency directories
 node_modules/
 jspm_packages/
-
+build
 # Snowpack dependency directory (https://snowpack.dev/)
 web_modules/
 
