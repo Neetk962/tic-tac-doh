@@ -1,0 +1,53 @@
+[
+    {
+      "username": "Homer Simpson",
+      "email": "homey@simpsons.lan",
+      "password": "password01"
+    },
+    {
+      "username": "Sideshow Bob",
+      "email": "bob@@simpsons.lan",
+      "password": "password01"
+    },
+    {
+      "username": "Milhouse Van Houten",
+      "email": "milhouse@simpsons.lan",
+      "password": "password01"
+    },
+    {
+      "username": "Krusty the Clown",
+      "email": "krusty@simpsons.lan",
+      "password": "password01"
+    },
+    {
+      "username": "Barney Gumble",
+      "email": "barney@simpsons.lan",
+      "password": "password01"
+    },
+    {
+      "username": "Nelson Muntz",
+      "email": "nelson@simpsons.lan",
+      "password": "password01"
+    },
+    {
+      "username": "Ralph Wiggum",
+      "email": "ralph@simpsons.lan",
+      "password": "password01"
+    },
+    {
+      "username": "Bleeding Gums Murphy",
+      "email": "murph@simpsons.lan",
+      "password": "password01"
+    },
+    {
+      "username": "Fat Tony",
+      "email": "fatone@simpsons.lan",
+      "password": "password01"
+    },
+    {
+      "username": "Moe Szyslak",
+      "email": "moe@simpsons.lan",
+      "password": "password01"
+    }
+  ]
+  
