@@ -6,15 +6,13 @@ import { ScoreBoard } from './ScoreBoard';
 import '../../App.css';
 import X from '../../assets/duff.png';
 import O from '../../assets/donut.png';
-<<<<<<< HEAD
-import DOH from '../../assets/doh.png';
-=======
+// import DOH from '../../assets/doh.png';
 import soundFile from "../../assets/homer-woohoo.mp3";
 // import Game from "./components/game/Game";
 // import homericon from './assets/IMG_2846.jpg'
 // import lisaicon from './assets/IMG_2847.jpg'
 // import margeicon from "./assets/IMG_2850.jpg"
->>>>>>> main
+
 
 
 
@@ -91,7 +89,7 @@ const Game = () => {
 
             return(
                 <>
-                <header id="header">Tic-Tac-<img id="doh" src={DOH}/></header>
+                {/* <header id="header">Tic-Tac-<img id="doh" src={DOH}/></header> */}
                     <section className='Game'>
                         <ScoreBoard score={score} xPlayer={xPlayer}/>
                         <Board gameboard ={gameboard} onClick={gameOver ? resetGameboard : handleSquareClick} />
