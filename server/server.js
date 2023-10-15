@@ -1,10 +1,14 @@
+/* IMPORT MODULES */
 require('dotenv').config();
 const express = require('express');
 const { ApolloServer } = require('apollo-server-express');
 const path = require('path');
 const authMiddleware = require('./utils/auth');
 
+/* IMPORT SCHEMAS */
 const { typeDefs, resolvers } = require('./schemas');
+
+/* IMPORT DATABASE AND DEFINE APOLLO-SERVER */
 const db = require('./config/connection');
 
 const PORT = process.env.PORT || 3001;
@@ -15,6 +19,7 @@ const server = new ApolloServer({
     context: authMiddleware,
 });
 
+/* MIDDLEWARE */
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
@@ -26,6 +31,7 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });
 
+/* SETUP APOLLO-SERVER */
 const startApolloServer = async () => {
     await server.start();
     server.applyMiddleware({ app });
@@ -38,4 +44,5 @@ const startApolloServer = async () => {
     })
 };
 
+/* START SERVER */
 startApolloServer();
