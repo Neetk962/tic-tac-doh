@@ -1,26 +1,54 @@
+import React, { useState } from 'react';
+import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from "@apollo/client";
+import { setContext } from "@apollo/client/link/context";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
+
 import Game from "./components/game/Game";
-import React,{useState} from 'react';
-import dohimg from "./assets/doh.png"
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
+const httpLink = createHttpLink({
+  uri: "/graphql",
+});
 
+const authLink = setContext((_, { headers }) => {
+  const token = localStorage.getItem("id_token");
+
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : "",
+    },
+  };
+});
+
+const client = new ApolloClient({
+  link: authLink.concat(httpLink),
+  cache: new InMemoryCache(),
+});
 
 function App() {
-  const [board, setBoard]= useState(Array(9).fill(''));
-  const [currentPlayer, setCurrentPlayer]= useState('x');
-
- 
-  
-
   return (
-    <section className='conatiner mx-auto p-8'>
-      <h1 className='title text-4xl font-bold mb-4 text-center simpsonfont text-amber-400'> Tic Tac</h1>
-      <img id="dohimg" src={dohimg} alt="doh" />
-      <div className="board grid grid-cols-3 gap-4"></div>
-      <Game/>
-     
-      
-    </section>
+    <ApolloProvider client={client}>
+      <Router>
+        <div className="flex flex-col min-h-screen">
+          <Header />
+          <main className="flex-grow">
+            <Routes>
+              <Route exact path="/" element={<Home />} />
+              <Route exact path="/login" element={<Login />} />
+              <Route exact path="/signup" element={<Signup />} />
+              <Route exact path="/game" element={<Game />} />
+            </Routes>
+          </main>
+          <Footer />
+        </div>
+      </Router>
+    </ApolloProvider>
   );
 }
 
