@@ -1,7 +1,7 @@
 import React from "react";
 import "./ScoreBoard.css";
-import X from "../../assets/duff.png";
-import O from "../../assets/donut.png";
+import X from "../../assets/images/duff.png";
+import O from "../../assets/images/donut.png";
 
 export const ScoreBoard = ({ score, xPlayer }) => {
   const { xScore, oScore } = score;
