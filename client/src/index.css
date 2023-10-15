@@ -3,7 +3,7 @@
 @tailwind utilities;
 @font-face {
   font-family: Simpsonfont;
-  src: url(./assets/Simpsonfont.ttf);
+  src: url(./assets/fonts/Simpsonfont.ttf);
 }
 
 body {

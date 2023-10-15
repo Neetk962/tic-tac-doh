@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Auth from "../../utils/auth";
-import dohimg from "../../assets/doh.png"
+import dohimg from "../../assets/images/doh.png"
 
 const Header = () => {
     const logout = (event) => {

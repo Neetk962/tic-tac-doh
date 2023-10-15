@@ -5,9 +5,9 @@ import { Board } from './Board';
 import { ResetButton } from './ResetButton';
 import { ScoreBoard } from './ScoreBoard';
 import '../../App.css';
-import X from '../../assets/duff.png';
-import O from '../../assets/donut.png';
-import soundFile from "../../assets/homer-woohoo.mp3";
+import X from '../../assets/images/duff.png';
+import O from '../../assets/images/donut.png';
+import soundFile from "../../assets/sounds/homer-woohoo.mp3";
 
 const Game = () => {
 
