@@ -31,30 +31,32 @@ const Signup = () => {
     });
   };
   return (
-    <main>
+    <main className="simpsonfont flex flex-col items-center max-w-[1040] m-auto md:pl-20 p-3 py-10">
       <div>
-        <div>
-          <h2>Signup</h2>
+        <div id="signup" className="backgroundColor: bg-pink-400 w-[375px] justify-center">
+          <h2 className="bg-amber-300 text-center font-bold">Sign Up</h2>
           <div>
             {data ? (
               <p>
                 Success! You may now head <Link to="/">back to the homepage.</Link>
               </p>
             ) : (
-              <form onSubmit={handleFormSubmit}>
-                <section>
-                  <input placeholder="Your username" name="username" type="username" value={formState.username} onChange={handleChange} />
-                </section>
-                <section>
-                  <input placeholder="Your email" name="email" type="email" value={formState.email} onChange={handleChange} />
-                </section>
-                <section>
-                  <input placeholder="******" name="password" type="password" value={formState.password} onChange={handleChange} />
-                </section>
-                <button className="cursor-pointer" type="submit">
-                  Submit
-                </button>
-              </form>
+              <section>
+                <form onSubmit={handleFormSubmit}>
+                  <section className="rounded flex flex-col m-3 w-[300px] p-3">
+                    <input placeholder="Your username" name="username" type="username" value={formState.username} onChange={handleChange} />
+                  </section>
+                  <section className="rounded flex flex-col m-3 w-[300px] p-3">
+                    <input placeholder="Your email" name="email" type="email" value={formState.email} onChange={handleChange} />
+                  </section>
+                  <section className="rounded flex flex-col m-3 w-[300px] p-3">
+                    <input placeholder="######" name="password" type="password" value={formState.password} onChange={handleChange} />
+                  </section>
+                  <section className="cursor-pointer bg-amber-300 flex flex-col items-center">
+                    <button type="submit">Submit</button>
+                  </section>
+                </form>
+              </section>
             )}
             {error && <div>{error.message}</div>}
           </div>
