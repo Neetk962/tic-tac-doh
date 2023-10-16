@@ -11,9 +11,12 @@ import soundFile from "../../assets/sounds/boring.mp3";
 const Header = () => {
     const logout = (event) => {
         event.preventDefault();
-        Auth.logout();
         const audio = new Audio(soundFile);
     audio.play();
+        setTimeout(() => {
+            Auth.logout();
+          }, "2000");
+    
     };
     return (
         <header>
