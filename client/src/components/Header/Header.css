@@ -1,0 +1,12 @@
+#header {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+#dohimg {
+  display: inline;
+  padding-bottom: 50px;
+  padding-top: 10px;
+  height: 250px;
+}
