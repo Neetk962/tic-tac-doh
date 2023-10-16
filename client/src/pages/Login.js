@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../utils/mutations";
 import Auth from "../utils/auth";
+import simps_door from "../assets/images/simps_door.png";
 
 const Login = (props) => {
   const [formState, setFormState] = useState({ email: "", password: "" });
@@ -58,6 +59,9 @@ const Login = (props) => {
           </div>
         </div>
       </div>
+      <section className="pt-11 min-w-max">
+        <img className="object-center" src={simps_door} id="door" />
+      </section>
     </main>
   );
 };
