@@ -4,6 +4,8 @@ const express = require('express');
 const { ApolloServer } = require('apollo-server-express');
 const path = require('path');
 const authMiddleware = require('./utils/auth');
+const { createServer } = require('http');
+const { Server } = require('socket.io');
 
 /* IMPORT SCHEMAS */
 const { typeDefs, resolvers } = require('./schemas');
@@ -17,6 +19,22 @@ const server = new ApolloServer({
     typeDefs,
     resolvers,
     context: authMiddleware,
+});
+const SOCKETPORT = process.env.SOCKET_PORT || 3002;
+const httpServer = createServer(app);
+const io = new Server(httpServer, {
+    cors: {
+        origin: '*',
+    },
+});
+io.on('connection', (socket) => {
+    console.log('a user connected');
+    socket.on('disconnect', () => {
+        console.log('user disconnected');
+    });
+});
+httpServer.listen(SOCKETPORT, () => {
+    console.log(`Socket.IO server running at http://localhost:${SOCKETPORT}/`);
 });
 
 /* MIDDLEWARE */
