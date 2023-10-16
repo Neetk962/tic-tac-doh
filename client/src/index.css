@@ -16,3 +16,27 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
+
+.header-container {
+  display: flex;
+  justify-content: center;
+}
+
+.title-container {
+  display: flex;
+  justify-content: center;
+}
+
+.title-container-font {
+  font-size: 8rem;
+}
+
+.title-image-container {
+  display: flex;
+  justify-content: center;
+}
+
+.title-image {
+  width: 12rem;
+  height: 8rem;
+}

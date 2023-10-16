@@ -11,9 +11,13 @@ const Header = () => {
     return (
         <header>
             <div>
-                <div>
-                    <h1 className='simpsonfont text-amber-400'>Tic Tac <img id="dohimg" src={dohimg} alt="doh" /></h1>
-                    
+                <div className='header-container'>
+                    <div className='title-container'>
+                        <h1 className='simpsonfont text-amber-400 title-container-font'>Tic Tac</h1>
+                    </div>
+                    <div className='title-image-container'>
+                        <img className='title-image' id="dohimg" src={dohimg} alt="doh" />
+                    </div>
                 </div>
                 <div>
                     {Auth.loggedIn() ? (
@@ -32,8 +36,8 @@ const Header = () => {
                         </>
                     )}
                 </div>
-            </div>
-        </header>
+            </div >
+        </header >
     );
 };
 
