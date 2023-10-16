@@ -11,8 +11,8 @@ const Header = () => {
   return (
     <header>
       <div>
-        <div>
-          <h1 className="simpsonfont text-amber-400 font-bold">
+        <div className="flex items-center">
+          <h1 className="inline-flex simpsonfont text-yellow-300 font-bold text-6xl items-center ">
             Tic Tac <img id="dohimg" src={dohimg} alt="doh" />
           </h1>
         </div>
@@ -27,7 +27,7 @@ const Header = () => {
             </>
           ) : (
             <>
-              <section className="inline-flex simpsonfont space-x-56">
+              <section className="flex simpsonfont justify-between text-4xl text-textDecorationLine: underline items-stretch pb-12">
                 <section className="flex">
                   <Link to="/">Home</Link>
                 </section>
