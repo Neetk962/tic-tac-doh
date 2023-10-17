@@ -29,13 +29,14 @@ const Header = () => {
         </div>
         <div>
           {Auth.loggedIn() ? (
-            <>
-              <span>Welcome, {Auth.getProfile().data.username}!</span>
-              <Link to="/game">Play</Link>
-              <button className="btn btn-lg btn-light m-2" onClick={logout}>
+            <div className="game-nav">
+              <span className="simpsonfont text-yellow-800 font-bold text-2xl">Welcome, {Auth.getProfile().data.username}!</span>
+
+              <Link to="/game" className="simpsonfont font-bold text-yellow-800 text-2xl">Play</Link>
+              <button className="btn btn-lg btn-light simpsonfont font-bold text-yellow-800 text-2xl" onClick={logout}>
                 Logout
               </button>
-            </>
+            </div>
           ) : (
             <>
               <section className="flex simpsonfont justify-between text-4xl text-textDecorationLine: underline items-stretch pb-12">
