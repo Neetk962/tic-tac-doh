@@ -10,7 +10,7 @@ import O from '../../assets/images/donut.png';
 import soundFile from "../../assets/sounds/homer-woohoo.mp3";
 import { io } from "socket.io-client";
 // socket.join()
-const socket = io('http://localhost:3001');
+const socket = io('http://127.0.0.1');
 const room = socket.id;
 const message = 'Room Joined!';
 socket.on('connect', socket => {

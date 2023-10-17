@@ -11,11 +11,12 @@ const { typeDefs, resolvers } = require('./schemas');
 const db = require('./config/connection');
 
 const PORT = process.env.PORT || 3001;
+console.log(PORT)
 const app = express();
 const serverSocket = require('http').createServer(app);
 const io = require('socket.io')(serverSocket, {
     cors: {
-        origin: "http://localhost:3000",
+        origin: "*",
         methods: ["GET", "POST"]
     }
 });
