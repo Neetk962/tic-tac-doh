@@ -8,21 +8,28 @@ import '../../App.css';
 import X from '../../assets/images/duff.png';
 import O from '../../assets/images/donut.png';
 import soundFile from "../../assets/sounds/homer-woohoo.mp3";
-
+import { io } from "socket.io-client";
+// socket.join()
+const socket = io('http://localhost:3001');
+const room = socket.id;
+const message = 'Room Joined!';
+socket.on('connect', socket => {
+    displayMessage(`connected with id: ${room}`)
+});
 const Game = () => {
-
+    
     // checks for winning patterns
     const WIN_POSITIONS =
-        [
-            [0, 1, 2],
-            [3, 4, 5],
-            [6, 7, 8],
-            [0, 4, 8],
-            [2, 4, 6],
-            [2, 5, 8],
-            [1, 4, 7],
-            [0, 3, 6],
-        ]
+            [
+                [0, 1, 2],
+                [3, 4, 5],
+                [6, 7, 8],
+                [0, 4, 8],
+                [2, 4, 6],
+                [2, 5, 8],
+                [1, 4, 7],
+                [0, 3, 6],
+            ]
 
     const [xPlayer, setXPlayer] = useState(true);
     const [gameboard, setGameboard] = useState(Array(9).fill(null))
@@ -94,5 +101,9 @@ const Game = () => {
         </section>
     );
 }
-
+function displayMessage() {
+    const divEl = document.createElement("div");
+    divEl.innerHTML = message;
+    document.getElementById('initialMessage').appendChild(divEl);
+}
 export default Game;
