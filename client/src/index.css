@@ -17,26 +17,14 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
-.header-container {
-  display: flex;
+.title {
+  font-size: 3rem;
   justify-content: center;
-}
-
-.title-container {
   display: flex;
-  justify-content: center;
 }
 
-.title-container-font {
-  font-size: 8rem;
-}
-
-.title-image-container {
+.game-nav {
   display: flex;
-  justify-content: center;
-}
-
-.title-image {
-  width: 12rem;
-  height: 8rem;
+  justify-content: space-around;
+  align-items: center;
 }
