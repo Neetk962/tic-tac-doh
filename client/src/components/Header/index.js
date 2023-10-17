@@ -2,13 +2,23 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Auth from "../../utils/auth";
 import dohimg from "../../assets/images/doh.png";
+import soundFile from "../../assets/sounds/boring.mp3";
 import "./Header.css";
 
+// function playSound() {
+//     const audio = new Audio(soundFile);
+//     audio.play();
+// }
 const Header = () => {
-  const logout = (event) => {
-    event.preventDefault();
-    Auth.logout();
-  };
+    const logout = (event) => {
+        event.preventDefault();
+        const audio = new Audio(soundFile);
+    audio.play();
+        setTimeout(() => {
+            Auth.logout();
+          }, "2000");
+    
+    };
   return (
     <header>
       <div>
