@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { ADD_USER } from "../utils/mutations";
 import Auth from "../utils/auth";
+import chalkboard from "../assets/images/chalkboard.png";
 
 const Signup = () => {
   const [formState, setFormState] = useState({ username: "", email: "", password: "" });
@@ -62,6 +63,9 @@ const Signup = () => {
           </div>
         </div>
       </div>
+      <section className="pt-11 min-w-max">
+        <img className="object-center" src={chalkboard} id="chalkboard" />
+      </section>
     </main>
   );
 };
