@@ -36,6 +36,9 @@ const Header = () => {
               <button className="btn btn-lg btn-light simpsonfont font-bold text-yellow-800 text-2xl" onClick={logout}>
                 Logout
               </button>
+              <Link to="/" className="simpsonfont font-bold text-yellow-800 text-2xl">Play</Link> 
+
+              <button type="submit"><Link to="/changepw" className="simpsonfont font-bold text-yellow-800 text-2xl">Change Password</Link> </button>
             </div>
           ) : (
             <>
