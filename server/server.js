@@ -30,6 +30,7 @@ const io = new Server(httpServer, {
         origin: '*',
     },
 });
+const rooms = [];
 io.on('connection', (socket) => {
     console.log('A user has connected to', socket.id);
     roomWorker(io, socket, rooms);
