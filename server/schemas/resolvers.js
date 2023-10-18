@@ -35,7 +35,23 @@ Mutation: {
 
         return { token, user };
     },
+    changePassword: async (parent,{email,password}) => {
+        const user =await User.findOne({email});
+        if (!user) {
+            throw new AuthenticationError('Incorrect credentials');
+        
+        }
+        const updateuser=await User.findOneAndUpdate({email:email},{password:password})
+        return updateuser
+    },
+    deleteUser: async (parent,{email}) => {
+        const deletedUser = await User.deleteOne({email:email})
+        return deletedUser
+        
+    }
 },
+
+
 };
 
 module.exports = resolvers;
