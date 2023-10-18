@@ -21,15 +21,15 @@ const Header = () => {
     };
   return (
     <header>
-      <div>
+      <div className="container mx-auto"> 
         <div id="header">
           <h1 className="content-center simpsonfont text-yellow-300 font-bold text-6xl [text-shadow:_0_3px_0_rgb(0_0_0_/_40%)]">
             Tic Tac <img id="dohimg" src={dohimg} alt="doh" />
           </h1>
         </div>
-        <div>
+        <div className="container sm:mx-auto">
           {Auth.loggedIn() ? (
-            <div className="game-nav">
+            <div className="game-nav container">
               <span className="simpsonfont text-yellow-800 font-bold text-2xl">Welcome, {Auth.getProfile().data.username}!</span>
 
               <Link to="/game" className="simpsonfont font-bold text-yellow-800 text-2xl">Play</Link>
