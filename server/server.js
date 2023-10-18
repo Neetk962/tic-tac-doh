@@ -6,6 +6,7 @@ const path = require('path');
 const authMiddleware = require('./utils/auth');
 const { createServer } = require('http');
 const { Server } = require('socket.io');
+const roomWorker = require("./utils/roomWorker");
 
 /* IMPORT SCHEMAS */
 const { typeDefs, resolvers } = require('./schemas');
@@ -15,12 +16,14 @@ const db = require('./config/connection');
 
 const PORT = process.env.PORT || 3001;
 const app = express();
-const server = new ApolloServer({
+const apolloServer = new ApolloServer({
     typeDefs,
     resolvers,
     context: authMiddleware,
 });
-const SOCKETPORT = process.env.SOCKET_PORT || 3002;
+
+/* SOCKET.IO SERVER SETUP */
+// const SOCKETPORT = process.env.SOCKET_PORT || 3002;
 const httpServer = createServer(app);
 const io = new Server(httpServer, {
     cors: {
@@ -28,14 +31,15 @@ const io = new Server(httpServer, {
     },
 });
 io.on('connection', (socket) => {
-    console.log('a user connected');
+    console.log('A user has connected to', socket.id);
+    roomWorker(io, socket, rooms);
     socket.on('disconnect', () => {
-        console.log('user disconnected');
+        console.log('A user has disconnected from', socket.id);
     });
 });
-httpServer.listen(SOCKETPORT, () => {
-    console.log(`Socket.IO server running at http://localhost:${SOCKETPORT}/`);
-});
+// httpServer.listen(SOCKETPORT, () => {
+//     console.log(`Socket.IO server running at http://localhost:${SOCKETPORT}/`);
+// });
 
 /* MIDDLEWARE */
 app.use(express.urlencoded({ extended: false }));
@@ -51,13 +55,13 @@ app.get('/', (req, res) => {
 
 /* SETUP APOLLO-SERVER */
 const startApolloServer = async () => {
-    await server.start();
-    server.applyMiddleware({ app });
+    await apolloServer.start();
+    apolloServer.applyMiddleware({ app });
 
     db.once('open', () => {
-        app.listen(PORT, () => {
-            console.log(`API server running on port ${PORT}!`);
-            console.log(`Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`);
+        httpServer.listen(PORT, () => {
+            console.log(`API and Socket.IO server running on port ${PORT}!`);
+            console.log(`Use GraphQL at http://localhost:${PORT}${httpServer.graphqlPath}`);
         })
     })
 };
