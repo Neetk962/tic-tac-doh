@@ -9,10 +9,10 @@ export const ScoreBoard = ({ score, xPlayer }) => {
   return (
     <section className="scoreboard">
       <span className={`score x-score ${!xPlayer && "inactive"}`}>
-        <img src={X} /> {xScore}
+        <img src={X} className="m-2 pr-8" /> {xScore}
       </span>
       <span className={`score o-score ${xPlayer && "inactive"}`}>
-        <img src={O} /> {oScore}
+        <img src={O} className="m-2 pr-8" /> {oScore}
       </span>
     </section>
   );
