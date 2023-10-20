@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useMutation } from "@apollo/client";
+import { DELETE_USER } from "../utils/mutations";
 import Auth from "../../utils/auth";
 import dohimg from "../../assets/images/doh.png";
 import soundFile from "../../assets/sounds/boring.mp3";
@@ -7,6 +9,7 @@ import deleteSoundFile from "../../assets/sounds/be_gone_from_my_sight.mp3";
 import "./Header.css";
 
 const Header = () => {
+  const [deleteUser, { error, data }] = useMutation(DELETE_USER);
   const logout = (event) => {
     event.preventDefault();
     const audio = new Audio(soundFile);
@@ -21,52 +24,57 @@ const Header = () => {
       const audio = new Audio(deleteSoundFile);
       audio.play();
       setTimeout(() => {
-        Auth.delete();
+        // const userId = Auth.getProfile().data._id;
+        // console.log(userId);
+        const { data } = deleteUser({
+          variables: { userId: Auth.getProfile().data._id },
+        });
+        console.log(data);
       }, "2000");
     }
   };
 
-return (
-  <header>
-    <div className="container mx-auto">
-      <div id="header">
-        <h1 className="content-center simpsonfont text-yellow-300 font-bold text-6xl [text-shadow:_0_3px_0_rgb(0_0_0_/_40%)]">
-          Tic Tac <img id="dohimg" src={dohimg} alt="doh" />
-        </h1>
-      </div>
-      <div className="container sm:mx-auto">
-        {Auth.loggedIn() ? (
-          <div className="game-nav container">
-            <span className="simpsonfont text-yellow-800 font-bold text-2xl">Welcome, {Auth.getProfile().data.username}!</span>
+  return (
+    <header>
+      <div className="container mx-auto">
+        <div id="header">
+          <h1 className="content-center simpsonfont text-yellow-300 font-bold text-6xl [text-shadow:_0_3px_0_rgb(0_0_0_/_40%)]">
+            Tic Tac <img id="dohimg" src={dohimg} alt="doh" />
+          </h1>
+        </div>
+        <div className="container sm:mx-auto">
+          {Auth.loggedIn() ? (
+            <div className="game-nav container">
+              <span className="simpsonfont text-yellow-800 font-bold text-2xl">Welcome, {Auth.getProfile().data.username}!</span>
 
-            <Link to="/game" className="simpsonfont font-bold text-yellow-800 text-2xl">Play</Link>
-            <button className="btn btn-lg btn-light simpsonfont font-bold text-yellow-800 text-2xl" onClick={logout}>
-              Logout
-            </button>
-            <Link to="/changepw" className="simpsonfont font-bold text-yellow-800 text-2xl">Change Password</Link>
-            <button className="btn btn-lg btn-light simpsonfont font-bold text-yellow-800 text-2xl" onClick={deleteAccount}>
-              Delete Account
-            </button>
-          </div>
-        ) : (
-          <>
-            <section className="flex simpsonfont justify-between text-4xl text-textDecorationLine: underline items-stretch pb-12">
-              <section className="flex pl-5">
-                <Link to="/">Home</Link>
+              <Link to="/game" className="simpsonfont font-bold text-yellow-800 text-2xl">Play</Link>
+              <button className="btn btn-lg btn-light simpsonfont font-bold text-yellow-800 text-2xl" onClick={logout}>
+                Logout
+              </button>
+              <Link to="/changepw" className="simpsonfont font-bold text-yellow-800 text-2xl">Change Password</Link>
+              <button className="btn btn-lg btn-light simpsonfont font-bold text-yellow-800 text-2xl" onClick={deleteAccount}>
+                Delete Account
+              </button>
+            </div>
+          ) : (
+            <>
+              <section className="flex simpsonfont justify-between text-4xl text-textDecorationLine: underline items-stretch pb-12">
+                <section className="flex pl-5">
+                  <Link to="/">Home</Link>
+                </section>
+                <section>
+                  <Link to="/login">Login</Link>
+                </section>
+                <section className="pr-5">
+                  <Link to="/signup">Signup</Link>
+                </section>
               </section>
-              <section>
-                <Link to="/login">Login</Link>
-              </section>
-              <section className="pr-5">
-                <Link to="/signup">Signup</Link>
-              </section>
-            </section>
-          </>
-        )}
+            </>
+          )}
+        </div>
       </div>
-    </div>
-  </header>
-);
+    </header>
+  );
 };
 
 export default Header;

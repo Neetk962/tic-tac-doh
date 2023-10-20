@@ -45,12 +45,6 @@ class AuthService {
 
         window.location.assign('/');
     }
-
-    delete() {
-        localStorage.removeItem('id_token');
-
-        window.location.assign('/');
-    }
 }
 
 export default new AuthService();
