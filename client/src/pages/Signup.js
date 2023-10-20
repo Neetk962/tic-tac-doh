@@ -63,8 +63,8 @@ const Signup = () => {
           </div>
         </div>
       </div>
-      <section className="pt-11 min-w-max">
-        <img className="object-center" src={chalkboard} id="chalkboard" />
+      <section className="pt-11 max-w-full">
+        <img className="object-center" src={chalkboard} id="board" />
       </section>
     </main>
   );

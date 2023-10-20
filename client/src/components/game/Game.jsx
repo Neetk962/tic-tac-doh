@@ -44,20 +44,27 @@ const Game = () => {
     // check for winner
     const winner = checkWinner(updateGameboard);
 
-    if (winner) {
-      if (winner === "O") {
-        const audio = new Audio(dohsound);
-        audio.play();
-        let { oScore } = score;
-        oScore += 1;
-        setScore({ ...score, oScore });
-      } else {
-        const audio = new Audio(winsound);
-        audio.play();
-        let { xScore } = score;
-        xScore += 1;
-        setScore({ ...score, xScore });
-      }
+        // check for winner
+        const winner = checkWinner(updateGameboard);
+
+        if (winner) {
+            if (winner === "O") {
+                const audio = new Audio(dohsound);
+                audio.play();
+                let { oScore } = score;
+                oScore += 1;
+                setScore({ ...score, oScore })
+            } else {
+                const audio = new Audio(winsound);
+                audio.play();
+                let { xScore } = score;
+                xScore += 1;
+                setScore({ ...score, xScore })
+            }
+        }
+        // change who is playing
+        setXPlayer(!xPlayer);
+
     }
     // change who is playing
     setXPlayer(!xPlayer);

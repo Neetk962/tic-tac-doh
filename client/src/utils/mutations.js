@@ -23,3 +23,23 @@ export const ADD_USER = gql`
         }
     }
 `;
+export const CHANGE_USER =gql`
+
+mutation Mutation($email: String!, $password: String!) {
+    changePassword(email: $email, password: $password) {
+      _id
+      username
+      email
+      password
+    }
+  }`;
+
+  export const DELETE_USER=gql`
+  mutation Mutation($email: String!) {
+    deleteUser(email: $email) {
+      _id
+      username
+      email
+      password
+    }
+  }`;

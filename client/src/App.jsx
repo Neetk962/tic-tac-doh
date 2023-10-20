@@ -10,6 +10,7 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import ChangePw from './pages/Changepw';
 
 const httpLink = createHttpLink({
   uri: "/graphql",
@@ -43,6 +44,7 @@ function App() {
               <Route exact path="/login" element={<Login />} />
               <Route exact path="/signup" element={<Signup />} />
               <Route exact path="/game" element={<Game />} />
+              <Route exact path="/changepw" element={<ChangePw />} />
             </Routes>
           </main>
           <Footer />
