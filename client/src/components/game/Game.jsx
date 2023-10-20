@@ -8,6 +8,8 @@ import '../../App.css';
 import X from '../../assets/images/duff.png';
 import O from '../../assets/images/donut.png';
 import soundFile from "../../assets/sounds/homer-woohoo.mp3";
+import dohsound from "../../assets/sounds/doh.mp3";
+import winsound from "../../assets/sounds/win.mp3";
 
 const Game = () => {
 
@@ -46,10 +48,14 @@ const Game = () => {
 
         if (winner) {
             if (winner === "O") {
+                const audio = new Audio(dohsound);
+                audio.play();
                 let { oScore } = score;
                 oScore += 1;
                 setScore({ ...score, oScore })
             } else {
+                const audio = new Audio(winsound);
+                audio.play();
                 let { xScore } = score;
                 xScore += 1;
                 setScore({ ...score, xScore })

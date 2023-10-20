@@ -59,7 +59,7 @@ const Login = (props) => {
           </div>
         </div>
       </div>
-      <section className="pt-11 min-w-max">
+      <section className="pt-11 max-w-full">
         <img className="object-center" src={simps_door} id="door" />
       </section>
     </main>
