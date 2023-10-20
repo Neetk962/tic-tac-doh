@@ -18,7 +18,7 @@ const Home = () => {
           <div className="flex flex-col m-4 items-center simpsonfont font-extrabold">
             <h2 className="text-6xl">Welcome Home!</h2>
           </div>
-          <div className="flex flex-col min-w-max">
+          <div className="flex flex-col max-w-full">
             <img className="object-center" id="living_room" src={living_room} />
           </div>
         </div>
